@@ -1,0 +1,14 @@
+00:35:59:382  INFO 23724 --- [main] com.hmall.item.ItemApplication           : Starting ItemApplication using Java 11.0.22 on LAPTOP-IPHGS4FO with PID 23724 (C:\04_Users\Download\Baiduyunpan\SpringCloud微服务—资料\day03-微服务01\资料\hmall\item-service\target\classes started by changan in C:\04_Users\Download\Baiduyunpan\SpringCloud微服务—资料\day03-微服务01\资料\hmall)
+00:35:59:383 DEBUG 23724 --- [main] com.hmall.item.ItemApplication           : Running with Spring Boot v2.7.12, Spring v5.3.27
+00:35:59:383  INFO 23724 --- [main] com.hmall.item.ItemApplication           : The following 1 profile is active: "dev"
+00:36:00:224  INFO 23724 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+00:36:00:231  INFO 23724 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+00:36:00:232  INFO 23724 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.75]
+00:36:00:320  INFO 23724 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+00:36:00:320  INFO 23724 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 904 ms
+00:36:01:455  INFO 23724 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+00:36:01:510  INFO 23724 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+00:36:01:511  INFO 23724 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Documentation plugins bootstrapped
+00:36:01:512  INFO 23724 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+00:36:01:526  INFO 23724 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+00:36:01:608  INFO 23724 --- [main] com.hmall.item.ItemApplication           : Started ItemApplication in 2.574 seconds (JVM running for 3.646)
