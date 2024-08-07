@@ -1,0 +1,49 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: trade-service #微服务名称
+  profiles: # 当前的运行环境
+    active: dev
+  datasource: #数据库的连接，每一个微服务数据库都需要独立，独立部署，数据独立 成本太高  模拟成一台mysql 不同的database 每一个微服务 创一个database 去做数据隔离 这样只需要改 数据库的名字
+    url: jdbc:mysql://${hm.db.host}:3306/hm-trade?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: ${hm.db.pw}
+  cloud:
+    nacos:
+      server-addr: 192.168.74.101:8848
+mybatis-plus: #mp的配置
+  configuration:
+    default-enum-type-handler: com.baomidou.mybatisplus.core.handlers.MybatisEnumTypeHandler
+  global-config:
+    db-config:
+      update-strategy: not_null
+      id-type: auto
+logging: #日志级别
+  level:
+    com.hmall: debug #com.hmall下面所有的日志级别都是debug
+  pattern:
+    dateformat: HH:mm:ss:SSS #日期格式
+  file:
+    path: "logs/${spring.application.name}" #日志文件保存的目录 ${} 变量读取 这样子会导致 每一个微服务的日志输出在不同目录下
+knife4j: #swagger 的配置 api文档 title description 修改
+  enable: true
+  openapi:
+    title: 黑马商城交易服务接口文档
+    description: "黑马商城交易服务接口文档"
+    email: zhanghuyi@itcast.cn
+    concat: 虎哥
+    url: https://www.itcast.cn
+    version: v1.0.0
+    group:
+      default:
+        group-name: default
+        api-rule: package
+        api-rule-resources:
+          - com.hmall.trade.controller #包 的名字修改，swagger扫描到controller 会吧controller接口信息作为接口文档信息,cartController下所有扫描包才能被扫描到
+
+# keytool -genkeypair -alias hmall -keyalg RSA -keypass hmall123 -keystore hmall.jks -storepass hmall123
+feign:
+  okhttp:
+    enabled: true
