@@ -48,7 +48,7 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
 		//3.获取token
 		String token =null;
 		List<String> headers = request.getHeaders().get("authorization");
-		if(CollUtils.isEmpty(headers)){
+		if(!CollUtils.isEmpty(headers)){
 			//headers!=null &&!headers.isEmpty()
 			token = headers.get(0);
 		}

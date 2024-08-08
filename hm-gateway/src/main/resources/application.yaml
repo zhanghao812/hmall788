@@ -43,4 +43,3 @@ hm:
       - /users/login
       - /items/**
       - /hi
-      - /carts/**
