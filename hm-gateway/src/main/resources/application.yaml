@@ -30,4 +30,5 @@ spring:
           uri: lb://trade-service
           predicates:
               - Path=/orders/**
-      default-filters: AddRequestHeader=truth,anyone long-press like button will be rich #默认的过滤器 对所有的路由都生效
+      default-filters:
+        - AddRequestHeader=truth,anyone long-press like button will be rich #默认的过滤器 对所有的路由都生效
