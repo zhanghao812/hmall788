@@ -33,3 +33,15 @@ spring:
       default-filters:
         - AddRequestHeader=truth,anyone long-press like button will be rich #默认的过滤器 对所有的路由都生效
         - PrintAny=1,2,3
+hm:
+  jwt:
+    location: classpath:hmall.jks
+    alias: hmall
+    password: hmall123 # 解析文件的密码
+    tokenTTL: 30m
+  auth:
+    excludePaths: # 不需要认证的接口 通过authproperites 读取
+      - /search/**
+      - /users/login
+      - /items/**
+      - /hi
