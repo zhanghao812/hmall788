@@ -12,8 +12,6 @@ spring:
           uri: lb://item-service #lb://前缀表示负载均衡，后面跟微服务的名字
           predicates: #路由的断言 name args path路径做匹配 controller路径是什么
             - Path=/items/**,/search/**
-          filters:
-            - AddRequestHeader=truth,anyone long-press like button will be rich
         - id: user-service
           uri: lb://user-service
           predicates:
@@ -45,3 +43,4 @@ hm:
       - /users/login
       - /items/**
       - /hi
+      - /carts/**
