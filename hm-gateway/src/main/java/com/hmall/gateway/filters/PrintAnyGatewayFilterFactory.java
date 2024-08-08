@@ -1,5 +1,6 @@
 package com.hmall.gateway.filters;
 
+import lombok.Data;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.OrderedGatewayFilter;
@@ -7,6 +8,8 @@ import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFac
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
+
+import java.util.List;
 
 /**
  * @program: hmall
@@ -16,15 +19,38 @@ import reactor.core.publisher.Mono;
  **/
 @Component
 //配置才能生效
-public class PrintAnyGatewayFilterFactory extends AbstractGatewayFilterFactory<Object> {
+public class PrintAnyGatewayFilterFactory extends AbstractGatewayFilterFactory<PrintAnyGatewayFilterFactory.Config> {
 	@Override
-	public GatewayFilter apply(Object config) {
+	public GatewayFilter apply(Config config) {
 		return new OrderedGatewayFilter(new GatewayFilter() {
 			@Override
 			public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+				String a = config.getA();
+				String b = config.getB();
+				String c = config.getC();
+				System.out.println("a="+a);
+				System.out.println("b="+b);
+				System.out.println("c="+c);
 				System.out.println("print any filter running");
 				return chain.filter(exchange);
 			}
 		},1); // 优先级 GatewayFilter() 当成了一个委托对象 装饰模式
+	}
+	@Data
+	public static class Config {
+		private String a;
+		private String b;
+		private String c;
+	}
+	//构造函数
+	public PrintAnyGatewayFilterFactory() {
+		super(Config.class);
+	}
+
+	//实现的方法
+
+	@Override
+	public List<String> shortcutFieldOrder() {
+		return List.of("a","b","c");
 	}
 }
