@@ -1,0 +1,30 @@
+package com.hmall.gateway.filters;
+
+import org.springframework.cloud.gateway.filter.GatewayFilter;
+import org.springframework.cloud.gateway.filter.GatewayFilterChain;
+import org.springframework.cloud.gateway.filter.OrderedGatewayFilter;
+import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
+import org.springframework.stereotype.Component;
+import org.springframework.web.server.ServerWebExchange;
+import reactor.core.publisher.Mono;
+
+/**
+ * @program: hmall
+ * @description:
+ * @author: zh
+ * @create: 2024-08-08 10:27
+ **/
+@Component
+//配置才能生效
+public class PrintAnyGatewayFilterFactory extends AbstractGatewayFilterFactory<Object> {
+	@Override
+	public GatewayFilter apply(Object config) {
+		return new OrderedGatewayFilter(new GatewayFilter() {
+			@Override
+			public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+				System.out.println("print any filter running");
+				return chain.filter(exchange);
+			}
+		},1); // 优先级 GatewayFilter() 当成了一个委托对象 装饰模式
+	}
+}
