@@ -24,7 +24,7 @@ spring:
           uri: lb://pay-service
           predicates:
             - Path=/pay-orders/**
-        - id: trade
+        - id: trade-service
           uri: lb://trade-service
           predicates:
               - Path=/orders/**

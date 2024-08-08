@@ -43,10 +43,10 @@ hm:
   jwt:
     location: classpath:hmall.jks
     alias: hmall
-    password: hmall123
+    password: hmall123 # 解析文件的密码
     tokenTTL: 30m
   auth:
-    excludePaths:
+    excludePaths: # 不需要认证的接口 通过authproperites 读取
       - /search/**
       - /users/login
       - /items/**

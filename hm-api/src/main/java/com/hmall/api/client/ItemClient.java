@@ -20,7 +20,7 @@ import java.util.List;
 @FeignClient("item-service")
 public interface ItemClient {
 	@GetMapping("/items")
-	List<ItemDTO> queryItemByIds(@RequestParam("id") Collection<Long> ids);
+	List<ItemDTO> queryItemByIds(@RequestParam("ids") Collection<Long> ids);
 
 	@PutMapping("/items/stock/deduct")
 	 void deductStock(@RequestBody List<OrderDetailDTO> items);
